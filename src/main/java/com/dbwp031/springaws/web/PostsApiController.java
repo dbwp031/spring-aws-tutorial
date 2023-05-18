@@ -1,7 +1,9 @@
 package com.dbwp031.springaws.web;
 
 import com.dbwp031.springaws.service.posts.PostsService;
+import com.dbwp031.springaws.web.dto.PostsResponseDto;
 import com.dbwp031.springaws.web.dto.PostsSaveRequestDto;
+import com.dbwp031.springaws.web.dto.PostsUpdateRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
