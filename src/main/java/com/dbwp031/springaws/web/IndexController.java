@@ -1,8 +1,12 @@
 package com.dbwp031.springaws.web;
 
+import com.dbwp031.springaws.config.auth.dto.LoginUser;
+import com.dbwp031.springaws.config.auth.dto.SessionUser;
 import com.dbwp031.springaws.service.posts.PostsService;
 import com.dbwp031.springaws.web.dto.PostsResponseDto;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
+import org.hibernate.Session;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,9 +17,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 public class IndexController {
 
     private final PostsService postsService;
+    private final HttpSession httpSession;
     @GetMapping("/")
-    public String index(Model model) {
+    public String index(Model model, @LoginUser SessionUser user) {
         model.addAttribute("posts", postsService.findAllDesc());
+        System.out.println("user"+user);
+        if (user != null) {
+            model.addAttribute("userName", user.getName());
+        }
         return "index";
     }
 
@@ -31,4 +40,8 @@ public class IndexController {
 
         return "posts-update";
     }
+
+
+
+
 }
