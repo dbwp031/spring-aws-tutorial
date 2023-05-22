@@ -36,7 +36,9 @@ dependencies {
 	implementation 'org.mariadb.jdbc:mariadb-java-client'
 	runtimeOnly 'com.mysql:mysql-connector-j'
 }
-
+jar {
+	enabled = false
+}
 tasks.named('test') {
 	useJUnitPlatform()
 }
